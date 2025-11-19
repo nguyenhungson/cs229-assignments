@@ -1,14 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import LogNorm
+from mpl_toolkits import mplot3d
 from mpl_toolkits.mplot3d import axes3d, Axes3D
 from computeCost import *
 from gradientDescent import *
 from plotData import *
+from pathlib import Path
 
 # ===================== Part 1: Plotting =====================
 print('Plotting Data...')
-data = np.loadtxt('ex1data1.txt', delimiter=',', usecols=(0, 1))
+data_path = Path(__file__).resolve().parent / "ex1data1.txt"
+data = np.loadtxt(data_path, delimiter=',', usecols=(0, 1))
 X = data[:, 0]
 y = data[:, 1]
 m = y.size
@@ -69,7 +72,7 @@ for i in range(0, theta0_vals.size):
 J_vals = np.transpose(J_vals)
 
 fig1 = plt.figure(1)
-ax = fig1.gca(projection='3d')
+ax = fig1.add_subplot(111, projection='3d')
 ax.plot_surface(xs, ys, J_vals)
 plt.xlabel(r'$\theta_0$')
 plt.ylabel(r'$\theta_1$')

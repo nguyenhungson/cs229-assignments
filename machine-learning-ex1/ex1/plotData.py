@@ -13,5 +13,8 @@ def plot_data(x, y):
 
 
     # ===========================================================
-
+    plt.scatter(x, y, marker='x', c='r')
+    plt.title('Scatter plot of training data', fontdict={'fontsize': 14})
+    plt.xlabel("Population of City in 10,000s", fontdict={'fontsize': 12})
+    plt.ylabel("Profit in $10,000s", fontdict={'fontsize': 12})
     plt.show()
