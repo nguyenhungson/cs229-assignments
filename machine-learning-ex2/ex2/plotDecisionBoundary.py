@@ -16,7 +16,7 @@ def plot_decision_boundary(theta, X, y):
 
         plt.plot(plot_x, plot_y)
 
-        plt.legend(['Decision Boundary', 'Admitted', 'Not admitted'], loc=1)
+        plt.legend(['Admitted', 'Not admitted', 'Decision Boundary'], loc='best')
         plt.axis([30, 100, 30, 100])
     else:
         # Here is the grid range
@@ -35,4 +35,4 @@ def plot_decision_boundary(theta, X, y):
         # Plot z = 0
         # Notice you need to specify the range [0, 0]
         cs = plt.contour(u, v, z, levels=[0], colors='r', label='Decision Boundary')
-        plt.legend([cs.collections[0]], ['Decision Boundary'])
+        plt.legend([cs], ['Decision Boundary'])

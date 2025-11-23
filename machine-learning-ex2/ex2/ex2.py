@@ -6,11 +6,13 @@ import costFunction as cf
 import plotDecisionBoundary as pdb
 import predict as predict
 from sigmoid import *
+from pathlib import Path
 
 plt.ion()
 # Load data
 # The first two columns contain the exam scores and the third column contains the label.
-data = np.loadtxt('ex2data1.txt', delimiter=',')
+data_path = Path(__file__).resolve().parent / "ex2data1.txt"
+data = np.loadtxt(data_path, delimiter=',')
 X = data[:, 0:2]
 y = data[:, 2]
 
@@ -20,7 +22,7 @@ print('Plotting Data with + indicating (y = 1) examples and o indicating (y = 0)
 plot_data(X, y)
 
 plt.axis([30, 100, 30, 100])
-plt.legend(['Admitted', 'Not admitted'], loc=1)
+plt.legend(['Admitted', 'Not admitted'], loc='best')
 plt.xlabel('Exam 1 score')
 plt.ylabel('Exam 2 score')
 
@@ -75,7 +77,7 @@ def grad_func(t):
 
 
 # Run fmin_bfgs to obtain the optimal theta
-theta, cost, *unused = opt.fmin_bfgs(f=cost_func, fprime=grad_func, x0=initial_theta, maxiter=400, full_output=True, disp=False)
+theta, cost, *unused = opt.fmin_bfgs(f=cost_func, fprime=grad_func, x0=initial_theta, maxiter=600, full_output=True, disp=False)
 
 print('Cost at theta found by fmin: {:0.4f}'.format(cost))
 print('Expected cost (approx): 0.203')

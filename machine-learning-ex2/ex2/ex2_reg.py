@@ -6,11 +6,13 @@ import costFunctionReg as cfr
 import plotDecisionBoundary as pdb
 import predict as predict
 import mapFeature as mf
+from pathlib import Path
 
 plt.ion()
 # Load data
 # The first two columns contain the exam scores and the third column contains the label.
-data = np.loadtxt('ex2data2.txt', delimiter=',')
+data_path = Path(__file__).resolve().parent / "ex2data2.txt"
+data = np.loadtxt(data_path, delimiter=',')
 X = data[:, 0:2]
 y = data[:, 2]
 
